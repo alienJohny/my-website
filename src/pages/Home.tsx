@@ -1,12 +1,11 @@
 import React from 'react'
 import { TabsComponent } from '../components/Home/TabsComponent'
+import About from '../components/Home/About'
 
 export default function Home() {
   return (
     <div className="d-flex flex-column">
-      <div>
-        Little about me
-      </div>
+      <About />
       <TabsComponent />
       <div>
         c

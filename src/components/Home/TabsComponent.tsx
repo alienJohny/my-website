@@ -15,19 +15,19 @@ const education: Array<Event> = [
     time: 'Aug-Sept 2017',
     title: 'Digital Technologies School',
     desc: '“Data Science / Python / Machine Learning” offline course',
-    now: false
+    now: true
   },
   {
     time: 'Sept 2016 - Sept 2021',
     title: 'Bauman Moscow State Technical University',
     desc: 'Bachelor degree in Software Engineering',
-    now: false
+    now: true,
   },
   {
     time: 'Oct 2015',
     title: 'Computer Training Center at Bauman University',
     desc: 'Certificate of Achievement accredits that I have successfully completed the course “Programming and Databases”',
-    now: false
+    now: true
   },
 ]
 
@@ -57,7 +57,7 @@ const achievements: Array<Event> = [
     time: '2017',
     title: '2nd place at All-Russian championship of engineering cases “Korolev Cup BMSTU 2017”',
     desc: 'Case from Bosch Rexroth. The team with me as a team leader took the 2nd place, presenting a sugar biscuit production scheme, a full analysis of production components and a sales optimization model.',
-    now: false
+    now: true
   },
 ]
 

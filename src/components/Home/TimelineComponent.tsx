@@ -11,7 +11,7 @@ interface TimelineComponentProps {
 export const TimelineComponent = ({ data }: TimelineComponentProps) => (
   <Timeline>
     {data.map((event, index) => (
-      <Timeline.Item key={index}>
+      <Timeline.Item key={index} color={ !event.now ? 'gray' : 'blue'}>
         <Title level={4}>{event.title}</Title>
         <Space direction="vertical">
           <Text type="secondary">{event.time}</Text>
