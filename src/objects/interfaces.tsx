@@ -1,5 +1,3 @@
-import React from 'react'
-
 export interface Event {
   time: string;
   title: string | JSX.Element;
