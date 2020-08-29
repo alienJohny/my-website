@@ -1,9 +1,36 @@
 import React from 'react'
-import { Tabs } from 'antd'
+import { Tabs, Typography } from 'antd'
 import { TimelineComponent } from './TimelineComponent'
-import { Event } from '../../objects/interfaces'
+import { Event, WorkingPeriod } from '../../objects/interfaces'
 
+const { Link } = Typography;
 const { TabPane } = Tabs
+
+const calculateWorkTimeExp = (dateStart: Date, dateEnd?: Date): WorkingPeriod => {
+  const dateNow: Date = new Date()
+  const diff = new Date(((dateEnd ? dateEnd : dateNow).getTime()) - dateStart.getTime())
+  const workingExp: WorkingPeriod = {
+    months: diff.getUTCMonth().toString(),
+    days: diff.getUTCDate().toString()
+  }
+  return workingExp
+}
+
+function formatStr(str: string, ...val: string[]) {
+  for (let index = 0; index < val.length; index++) {
+    str = str.replace(`{${index}}`, val[index]);
+  }
+  return str;
+}
+
+const getLink = (text: string, path: string, adds?: string | JSX.Element): JSX.Element => (
+  <>
+    {adds}
+    <Link href={path} target="_blank">
+      {text}
+    </Link>
+  </>
+)
 
 const education: Array<Event> = [
   {
@@ -13,7 +40,7 @@ const education: Array<Event> = [
   },
   {
     time: 'Aug-Sept 2017',
-    title: 'Digital Technologies School',
+    title: getLink('Digital Technologies School', 'https://digitaltech.school/', 'Course at '),
     desc: '“Data Science / Python / Machine Learning” offline course',
     now: true
   },
@@ -33,8 +60,12 @@ const education: Array<Event> = [
 
 const workExperience: Array<Event> = [
   {
-    time: 'July 2020 - Now',
-    title: 'Frontend-Developer at System Global Services',
+    time: formatStr(
+      'July 2020 - Now ({0} mo. {1} days)',
+      calculateWorkTimeExp(new Date(2020, 6, 10)).months,
+      calculateWorkTimeExp(new Date(2020, 6, 10)).days,
+    ),
+    title: getLink('System Global Services', 'https://www.sgsdt.com', 'Frontend Developer at '),
     desc: '',
     now: true
   },
@@ -55,7 +86,7 @@ const achievements: Array<Event> = [
   },
   {
     time: '2017',
-    title: '2nd place at All-Russian championship of engineering cases “Korolev Cup BMSTU 2017”',
+    title: getLink('“Korolev Cup BMSTU 2017”', 'https://bmstu.ru/mstu/news/?newsid=4229', '2nd place at All-Russian championship of engineering cases '),
     desc: 'Case from Bosch Rexroth. The team with me as a team leader took the 2nd place, presenting a sugar biscuit production scheme, a full analysis of production components and a sales optimization model.',
     now: true
   },
