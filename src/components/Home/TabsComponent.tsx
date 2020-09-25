@@ -1,5 +1,5 @@
 import React from 'react'
-import { Tabs, Typography } from 'antd'
+import { Tabs, Typography, Tag, Space } from 'antd'
 import { TimelineComponent } from './TimelineComponent'
 import { Event, WorkingPeriod } from '../../objects/interfaces'
 
@@ -23,14 +23,15 @@ function formatStr(str: string, ...val: string[]) {
   return str;
 }
 
-const getLink = (text: string, path: string, adds?: string | JSX.Element): JSX.Element => (
-  <>
+const getLink = (text: string, path: string, adds?: string | JSX.Element, addsEnd?: string | JSX.Element,): JSX.Element => (
+  <Space align="center" direction="horizontal" className="flex-wrap">
     {adds}
     <Link href={path} target="_blank">
       {text}
     </Link>
-  </>
-)
+    {addsEnd}
+  </Space>
+) 
 
 const education: Array<Event> = [
   {
@@ -65,7 +66,12 @@ const workExperience: Array<Event> = [
       calculateWorkTimeExp(new Date(2020, 6, 10)).months,
       calculateWorkTimeExp(new Date(2020, 6, 10)).days,
     ),
-    title: getLink('System Global Services', 'https://www.sgsdt.com', 'Frontend Developer at '),
+    title: getLink(
+      'System Global Services',
+      'https://www.sgsdt.com',
+      'Frontend Developer at ',
+      <Tag color="green" style={{ marginBottom: '4px' }}>Working now</Tag>
+    ),
     desc: '',
     now: true
   },
