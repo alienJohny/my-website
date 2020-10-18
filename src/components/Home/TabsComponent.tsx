@@ -98,18 +98,31 @@ const achievements: Array<Event> = [
   },
 ]
 
-export const TabsComponent = () => (
+const tabs: Array<{ header: string, data: Array<Event> }> = [
+  {
+    header: 'Education',
+    data: education,
+  },
+  {
+    header: 'Work Experience',
+    data: workExperience,
+  },
+  {
+    header: 'Achievements',
+    data: achievements,
+  },
+]
+
+export const TabsComponent = (): JSX.Element => (
   <div className="p-3">
     <Tabs defaultActiveKey="1" tabPosition={'left'}>
-      <TabPane tab={'Education'} key={0}>
-        <TimelineComponent data={education} />
-      </TabPane>
-      <TabPane tab={'Work Experience'} key={1}>
-        <TimelineComponent data={workExperience} />
-      </TabPane>
-      <TabPane tab={'Achievements'} key={2}>
-        <TimelineComponent data={achievements} />
-      </TabPane>
+      {
+        tabs.map((obj, index) => (
+          <TabPane tab={obj.header} key={index}>
+            <TimelineComponent data={obj.data} />
+          </TabPane>
+        ))
+      }
     </Tabs>
   </div>
 )

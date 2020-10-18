@@ -10,17 +10,17 @@ import {
 const { Title, Text, Link } = Typography
 
 interface DataDescription {
-  credentialId?: string,
-  verificationLink?: string,
-  name: string | JSX.Element,
+  credentialId?: string;
+  verificationLink?: string;
+  name: string | JSX.Element;
 }
 
 interface Data {
-  key: string,
-  issuingOrganization: JSX.Element | string,
-  issueDate: string,
-  description: DataDescription,
-  imageLink: string,
+  key: string;
+  issuingOrganization: JSX.Element | string;
+  issueDate: string;
+  description: DataDescription;
+  imageLink: string;
 }
 
 const columns = [
